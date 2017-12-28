@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE tiles-definitions PUBLIC "-//Apache Software Foundation//DTD Tiles Configuration 3.0//EN" "http://tiles.apache.org/dtds/tiles-config_3_0.dtd">
+<!-- 뷰 이름에 확장자를 붙이지 않는 이유 -->
+<tiles-definitions>
+	<definition name="default" template="/WEB-INF/views/layout/template.jsp">
+		<!-- <put-attribute name="title" expression="${pageTitle}" /> -->
+		<put-attribute name="header" value="/WEB-INF/views/layout/header.jsp" />
+		<put-attribute name="nav" value="/WEB-INF/views/layout/nav.jsp" />
+		<put-attribute name="body" value="/WEB-INF/views/layout/empty.jsp" />
+		<put-attribute name="footer" value="/WEB-INF/views/layout/footer.jsp" />
+	</definition>
+
+	<!-- default 템플릿과 다른 디자인의 화면을 출력하고 싶다면 확실한 name속성값을 주고 상속을 받지 않으면 된다. -->
+	<definition name="login/loginForm" template="/WEB-INF/views/layout/emptyTemplate.jsp">
+		<!-- <put-attribute name="header" value="/WEB-INF/views/layout/header.jsp" /> -->
+		<!-- <put-attribute name="nav" value="/WEB-INF/views/layout/nav.jsp" /> -->
+		<put-attribute name="body" value="/WEB-INF/views/login/loginForm.jsp" />
+		<put-attribute name="footer" value="/WEB-INF/views/layout/footer.jsp" />
+	</definition>
+	
+	<!-- 뷰의 이름을 컨트롤러가 리턴 -->
+	<!-- viewname = "member/memberList" -->
+	
+	<!-- <definition name="member/memberList" extends="default">
+		<put-attribute name="body" value="/WEB-INF/views/member/memberList.jsp" />
+	</definition> -->
+
+	<!-- viewname = "board/boardList" -->
+	<!-- <definition name="board/boardList" extends="default">
+		<put-attribute name="body" value="/WEB-INF/views/board/boardList.jsp" />
+	</definition> -->
+	
+	<definition name="*" extends="default">
+		<put-attribute name="body" value="/WEB-INF/views/{1}.jsp" />
+	</definition>
+
+	<!-- member/memberList와 같은 뷰의 이름이 2단계로 이루어져 있으면 */* 형식에 다 걸려 들어온다, value속성 값의 경로는 {1}/{2}로 처리 -->
+	<definition name="*/*" extends="default">
+		<put-attribute name="body" value="/WEB-INF/views/{1}/{2}.jsp" />
+	</definition>
+
+	<definition name="*/*/*" extends="default">
+		<put-attribute name="body" value="/WEB-INF/views/{1}/{2}/{3}.jsp" />
+	</definition>
+
+</tiles-definitions>
+

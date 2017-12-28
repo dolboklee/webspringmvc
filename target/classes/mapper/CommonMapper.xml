@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+<mapper namespace="CommonMapper"><!-- namespace가 중요 -->
+
+<sql id="pageHeader">
+
+select * from(
+select
+rownum as rnum,
+tb.*
+from
+(
+ 
+</sql>
+
+<sql id="pageFooter"> 
+) tb )where rnum between #{startRow} and #{endRow}
+</sql>
+	
+</mapper>

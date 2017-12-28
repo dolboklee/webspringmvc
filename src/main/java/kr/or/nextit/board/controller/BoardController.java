@@ -34,7 +34,7 @@ public class BoardController {
 	@Autowired
 	FileItemService fileItemService;
 	
-	
+	//ㅁㄴㅇ
 	
 	@RequestMapping("/boardList")
 	public String boardList(
